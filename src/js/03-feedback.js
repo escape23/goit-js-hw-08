@@ -8,9 +8,9 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.emailarea.addEventListener('input', throttle(onEmailAreaInput, 500));
+refs.emailarea.addEventListener('input', throttle(onEmailAreaInput, 1000));
 
-refs.textarea.addEventListener('input', throttle(onTextareaInput, 500));
+refs.textarea.addEventListener('input', throttle(onTextAreaInput, 1000));
 
 refs.form.addEventListener('input', evt => {
   let formData = {
@@ -20,7 +20,7 @@ refs.form.addEventListener('input', evt => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 });
 
-populateTextarea();
+populateTextArea();
 
 function onFormSubmit(evt) {
   evt.preventDefault();
@@ -32,18 +32,17 @@ function onEmailAreaInput(evt) {
   const email = evt.target.value;
 }
 
-function onTextareaInput(evt) {
+function onTextAreaInput(evt) {
   const message = evt.target.value;
-  localStorage.setItem(STORAGE_KEY, message);
 }
 
-function populateTextarea() {
+function populateTextArea() {
   const savedMessage = localStorage.getItem(STORAGE_KEY);
   const parseMessage = JSON.parse(savedMessage);
   console.log(parseMessage);
 
   if (parseMessage) {
-    refs.emailarea.value = parseMessage.email;
-    refs.textarea.value = parseMessage.message;
+    refs.emailarea.value = parseMessage.email || ' ';
+    refs.textarea.value = parseMessage.message || ' ';
   }
 }
