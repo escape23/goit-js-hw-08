@@ -19,7 +19,7 @@ list.innerHTML = createMarkup;
 
 const lightbox = new SimpleLightbox('.gallery__link', {
   captionsData: 'alt',
-  captionPosition: 'top',
+  captionPosition: 'bottom',
   captionDelay: 250,
   sourceAttr: 'data-source',
 });
