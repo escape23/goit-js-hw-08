@@ -24,6 +24,10 @@ populateTextArea();
 
 function onFormSubmit(evt) {
   evt.preventDefault();
+  console.log({
+    email: refs.form.email.value,
+    message: refs.form.message.value,
+  });
   evt.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
